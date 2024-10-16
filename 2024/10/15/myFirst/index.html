@@ -309,6 +309,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/NodeJS/" class="post-category">
+                                NodeJS
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -345,7 +354,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="EJS-Embedded-Javascript"><a href="#EJS-Embedded-Javascript" class="headerlink" title="EJS(Embedded Javascript)"></a>EJS(Embedded Javascript)</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><pre class="line-numbers language-none"><code class="language-none">var express &#x3D; require(&#39;express&#39;);
+                <h2 id="EJS-Embedded-Javascript"><a href="#EJS-Embedded-Javascript" class="headerlink" title="EJS(Embedded Javascript)"></a>EJS(Embedded Javascript)</h2><p>EJS 的全名是「Embedded Javascript」，顧名思義就是內嵌式的樣板引擎，可以將邏輯與內容直接嵌入到 HTML 頁面上，也就是 EJS 可以讓我們利用 JavaScript 生成 HTML 頁面 ，以下為 app.js 範例 :</p>
+<h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><pre class="line-numbers language-none"><code class="language-none">var express &#x3D; require(&#39;express&#39;);
 var app &#x3D; express();
 app.set(&#39;view engine&#39;, &#39;ejs&#39;);
 app.get(&#39;&#x2F;&#39;, function (req, res) &#123;
@@ -360,20 +370,19 @@ app.listen(3000, function() &#123;
 &#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-
-<h2 id=""><a href="#" class="headerlink" title="&lt;%&#x3D;%&gt;"></a>&lt;%&#x3D;%&gt;</h2><h6 id="將-res-render-‘index’-…-輸出過來的變數當值來使用。"><a href="#將-res-render-‘index’-…-輸出過來的變數當值來使用。" class="headerlink" title="將 res.render(‘index’,{…}); 輸出過來的變數當值來使用。"></a>將 res.render(‘index’,{…}); 輸出過來的變數當值來使用。</h6><pre class="line-numbers language-none"><code class="language-none">也就是說 &lt;%&#x3D; game %&gt; 的 game 就是 game:&#39;Final Fantasy VII&#39;，
-所以這段內容 &#x3D;&#x3D;&lt;h1&gt;&lt;%&#x3D; game %&gt;&lt;&#x2F;h1&gt;&#x3D;&#x3D;等於 &lt;h1&gt;Final Fantasy VII&lt;&#x2F;h1&gt;。
-你就把它當作像是呼叫函式時，所傳輸過去的『參數』，這樣會比較好理解。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="-1"><a href="#-1" class="headerlink" title="&lt;%-%&gt;"></a>&lt;%-%&gt;</h2><h6 id="將-res-render-‘index’-…-輸出過來的變數做保留字元來使用。"><a href="#將-res-render-‘index’-…-輸出過來的變數做保留字元來使用。" class="headerlink" title="將 res.render(‘index’,{…}); 輸出過來的變數做保留字元來使用。"></a>將 res.render(‘index’,{…}); 輸出過來的變數做保留字元來使用。</h6><pre class="line-numbers language-none"><code class="language-none">也就是說其變數送過來後，會被當作 HTML 語法來使用。
-因此 &lt;%- category %&gt; 變成 &lt;p&gt;&lt;b&gt;Characters:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="-2"><a href="#-2" class="headerlink" title="&lt;% %&gt;"></a>&lt;% %&gt;</h2><h6 id="將標籤內的內容，當作程式邏輯來使用，像是-if-else-判斷式、for-迴圈。"><a href="#將標籤內的內容，當作程式邏輯來使用，像是-if-else-判斷式、for-迴圈。" class="headerlink" title="將標籤內的內容，當作程式邏輯來使用，像是 if else 判斷式、for 迴圈。"></a>將標籤內的內容，當作程式邏輯來使用，像是 if else 判斷式、for 迴圈。</h6><pre class="line-numbers language-none"><code class="language-none">&lt;%for(var i&#x3D;0;i&lt;characters.length;i++)&#123;%&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h1><h2 id="1"><a href="#1" class="headerlink" title="1. &lt;%&#x3D;%&gt;"></a>1. &lt;%&#x3D;%&gt;</h2><p><strong>將輸出過來的變數當值來使用。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;%&#x3D; game %&gt;     &#x2F;&#x2F; game 就是 game:&#39;Final Fantasy VII&#39;，<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>所以， <code>&lt;h1&gt;&lt;%= game %&gt;&lt;/h1&gt;</code> &#x3D; <code>&lt;h1&gt;Final Fantasy VII&lt;/h1&gt;。</code><br>你就把它當作像是呼叫函式時，所傳輸過去的『參數』，這樣會比較好理解。</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2. &lt;%-%&gt;"></a>2. &lt;%-%&gt;</h2><p><strong>將輸出過來的變數做保留字元來使用。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;%- category %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>其變數送過來後，會被當作 HTML 語法來使用。<br>因此 <code>&lt;%- category %&gt; 變成 &lt;p&gt;&lt;b&gt;Characters:&lt;/b&gt;&lt;/p&gt;。</code></p>
+<h2 id=""><a href="#" class="headerlink" title="&lt;% %&gt;"></a>&lt;% %&gt;</h2><p><strong>將標籤內的內容，當作程式邏輯來使用，像是 if else 判斷式、for 迴圈。</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;% for(var i&#x3D;0;i&lt;characters.length;i++) %&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>上圖就是迴圈處理，<br>把 characters 陣列裡的成員，依照清單方式一一印出來</p>
 <pre class="line-numbers language-none"><code class="language-none">( &lt;li&gt;&lt;%&#x3D; characters[i]%&gt;&lt;&#x2F;li&gt; )
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
-<h1 id="middleware"><a href="#middleware" class="headerlink" title="middleware"></a>middleware</h1><h2 id="morgan"><a href="#morgan" class="headerlink" title="morgan"></a><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/morgan">morgan</a></h2><hr>
 <h1 id="Mongodb"><a href="#Mongodb" class="headerlink" title="Mongodb"></a>Mongodb</h1><h2 id="增加blog到mongodb"><a href="#增加blog到mongodb" class="headerlink" title="增加blog到mongodb"></a>增加blog到mongodb</h2><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;mongoose and mongo sandbox routes  
 app.get(&#39;&#x2F;add-blog&#39;,(req,res)&#x3D;&gt;&#123;
     const blog &#x3D; new Blog(&#123;
@@ -579,48 +588,46 @@ app.get(&#39;&#x2F;add-blog&#39;,(req,res)&#x3D;&gt;&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2024/10/15/myFirst/">
+                <a href="/2024/10/16/GET-POST/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="myFirst(EJS)">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="GET/POST">
                         
-                        <span class="card-title">myFirst(EJS)</span>
+                        <span class="card-title">GET/POST</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            這是我學習EJS框架的紀錄。
+                            GET and POST 區別。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-10-16
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jinyan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/HTTP/" class="post-category">
+                                    HTTP
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/NodeJS/">
-                        <span class="chip bg-color">NodeJS</span>
+                    <a href="/tags/HTTP-Method/">
+                        <span class="chip bg-color">HTTP Method</span>
                     </a>
                     
                 </div>
@@ -876,13 +883,13 @@ app.get(&#39;&#x2F;add-blog&#39;,(req,res)&#x3D;&gt;&#123;
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/jinyanlin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/jinyanlin" class="tooltipped" target="_blank" data-tooltip="訪問我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:moralyplin@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:moralyplin@gmail.com" class="tooltipped" target="_blank" data-tooltip="信箱聯繫我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 

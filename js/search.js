@@ -74,7 +74,7 @@ var searchFunc = function (path, search_id, content_id) {
                     }
                 });
                 str += "</ul>";
-                str = "<p class=\"search-result-summary\">共找到" + String(cnt-1) + "条结果</p>"  + str;
+                str = "<p class=\"search-result-summary\">共找到" + String(cnt-1) + "條結果</p>"  + str;
                 $resultContent.innerHTML = str;
             });
         }
